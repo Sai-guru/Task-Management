@@ -54,45 +54,29 @@ This project was developed as part of the Full Stack Application Developer Hirin
 
 ## Project Structure
 
+```text
 project-root/
-
-frontend/
-
-src/
-
-components/
-
-pages/
-
-services/
-
-types/
-
-utils/
-
-backend/
-
-src/
-
-config/
-
-controllers/
-
-database/
-
-middleware/
-
-models/
-
-routes/
-
-services/
-
-types/
-
-utils/
-
-README.md
+│
+├── frontend/
+│   ├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── types/
+│   └── utils/
+│
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── database/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   |── utils/
+│      
+└── README.md
 
 ---
 
@@ -328,31 +312,31 @@ Final cleanup
 
 ### Dashboard
 
-[Dashboard](./assets/Dashboard.png)
+![Dashboard](./assets/Dashboard.png)
 
 ---
 
 ### Add Task
 
-[Newtask](./assets/Addingtask.png)
-[Newtask](./assets/createAtask.png)
+![Newtask](./assets/Addingtask.png)
+![Newtask](./assets/createAtask.png)
 
 ---
 
 ### Dark Mode
 
-[Theme](./assets/themes.png)
+![Theme](./assets/themes.png)
 
 ---
 
 ## Screenshots
 
-[GetAllTasks](./assets/getAlltasks.png)
-[FilterByName](./assets/nameFilter.png)
-[FilterByStatus](./assets/FilterByStatus.png)
-[DeleteFromSite](./assets/delAtaskfront.png)
-[Database](./assets/database.png)
-[DeleteATask](./assets/deletetask.png)
+![GetAllTasks](./assets/getAlltasks.png)
+![FilterByName](./assets/nameFilter.png)
+![FilterByStatus](./assets/FilterByStatus.png)
+![DeleteFromSite](./assets/delAtaskfront.png)
+![Database](./assets/database.png)
+![DeleteATask](./assets/deletetask.png)
 
 ---
 
