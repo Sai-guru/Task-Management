@@ -329,14 +329,20 @@ Final cleanup
 
 ---
 
-## Screenshots
+## GetAllTasks
 
 ![GetAllTasks](./assets/getAlltasks.png)
+
+## FilterByName and Status
 ![FilterByName](./assets/nameFilter.png)
 ![FilterByStatus](./assets/FilterByStatus.png)
+
+## Deletion from Both ends
 ![DeleteFromSite](./assets/delAtaskfront.png)
-![Database](./assets/database.png)
 ![DeleteATask](./assets/deletetask.png)
+
+## Database
+![Database](./assets/database.png)
 
 ---
 
