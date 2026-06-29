@@ -6,7 +6,7 @@ export const createTask = async (task: CreateTask) => {
   return res.data;
 };
 
-export const getTasks = async (status: TaskStatus,search: string,sort: "ASC" | "DESC" = "DESC") => {
+export const getTasks = async (status?: TaskStatus,search?: string,sort: "ASC" | "DESC" = "DESC") => {
   const res = await api.get("/tasks", {
     params: {
       status,

@@ -18,17 +18,11 @@ const Dashboard = () => {
   
   const totalTasks = tasks.length;
   const pendingTasks = tasks.filter((t) => t.status === "Pending").length;
-  const inProgressTasks = tasks.filter(
-    (t) => t.status === "In Progress"
-  ).length;
-  const completedTasks = tasks.filter(
-    (t) => t.status === "Completed"
-  ).length;
+  const inProgressTasks = tasks.filter((t) => t.status === "In Progress").length;
+  const completedTasks = tasks.filter((t) => t.status === "Completed").length;
 
   const successRate =
-    totalTasks === 0
-      ? 0
-      : Math.round((completedTasks / totalTasks) * 100);
+    totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
 
   const fetchTasks = async () => {
     try {
@@ -41,6 +35,7 @@ const Dashboard = () => {
       setTasks(response.data);
     } catch {
       toast.error("Failed to fetch tasks");
+      
     } finally {
       setLoading(false);
     }

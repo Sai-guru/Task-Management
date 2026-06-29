@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 import toast from "react-hot-toast";
 
 import { createTask } from "../services/taskService";
-import { taskSchema } from "../utils/taskSchema";
 import type { CreateTask } from "../types/task";
 
 const AddTask = () => {
@@ -15,7 +14,6 @@ const AddTask = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<CreateTask>({
-    resolver: zodResolver(taskSchema),
     defaultValues: {
       status: "Pending",
     },
@@ -55,7 +53,7 @@ const AddTask = () => {
             </label>
 
             <input
-              {...register("title")}
+              {...register("title", { required: "Title is required" })}
               className="w-full rounded-lg border p-3 outline-none focus:border-blue-500"
               placeholder="Enter task title"
             />
@@ -75,7 +73,7 @@ const AddTask = () => {
 
             <textarea
               rows={5}
-              {...register("description")}
+              {...register("description", { required: "Description is required", minLength: { value: 20, message: "Description must be at least 20 characters" } })}
               className="w-full rounded-lg border p-3 outline-none focus:border-blue-500"
               placeholder="Enter task description"
             />
