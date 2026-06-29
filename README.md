@@ -30,7 +30,6 @@ This project was developed as part of the Full Stack Application Developer Hirin
 * React Router DOM
 * Axios
 * React Hook Form
-* Zod
 * React Hot Toast
 * Tailwind CSS
 
@@ -74,7 +73,7 @@ project-root/
 │   │   ├── models/
 │   │   ├── routes/
 │   │   ├── services/
-│   │   |── utils/
+│   │  
 │      
 └── README.md
 
@@ -239,7 +238,6 @@ DELETE /api/tasks/:id
 * Add Task Page
 * React Router Navigation
 * React Hook Form Validation
-* Zod Schema Validation
 * Axios API Integration
 * Task Search
 * Status Filter
