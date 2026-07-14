@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
 import { successResponse } from "../utils/response.js";
 
-import { getAllTasks, createTask, updateTaskStatus,deleteTask} from "../services/taskService.js";
+import {
+  getAllTasks,
+  createTask,
+  updateTaskStatus,
+  deleteTask,
+} from "../services/taskService.js";
 import { TaskStatus } from "../models/taskModel.js";
 
 //get a task..
@@ -9,11 +14,13 @@ import { TaskStatus } from "../models/taskModel.js";
 export const getTasks = async (req: Request, res: Response) => {
   try {
     const { status, search, sort } = req.query;
+    const userId = req.user?.id;
 
     const tasks = await getAllTasks(
       status as TaskStatus | undefined,
       search as string | undefined,
-      (sort as "ASC" | "DESC") || "DESC"
+      (sort as "ASC" | "DESC") || "DESC",
+      userId,
     );
 
     res.status(200).json(successResponse("Tasks fetched successfully.", tasks));
@@ -26,7 +33,7 @@ export const getTasks = async (req: Request, res: Response) => {
 // @POST /api/tasks
 export const addTask = async (req: Request, res: Response) => {
   try {
-    const task = await createTask(req.body);
+    const task = await createTask(req.body, req.user?.id);
 
     res.status(201).json(successResponse("Task created successfully.", task));
   } catch (error) {
@@ -41,10 +48,10 @@ export const completeTask = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { status } = req.body;
 
-    const task = await updateTaskStatus(Number(id), status);
+    const task = await updateTaskStatus(Number(id), status, req.user?.id);
     if (!task) throw new Error("Task not found");
 
-    res.status(200).json(successResponse("Task updated successfully",task));
+    res.status(200).json(successResponse("Task updated successfully", task));
   } catch (error) {
     throw new Error("Failed to update the task");
   }
@@ -56,7 +63,7 @@ export const removeTask = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const deleted = await deleteTask(Number(id));
+    const deleted = await deleteTask(Number(id), req.user?.id);
 
     if (!deleted) throw new Error("Task not found");
 

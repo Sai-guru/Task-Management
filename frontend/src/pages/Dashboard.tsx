@@ -15,10 +15,12 @@ const Dashboard = () => {
   const [sort, setSort] = useState<"ASC" | "DESC">("DESC");
 
   const debouncedSearch = useDebounce(search);
-  
+
   const totalTasks = tasks.length;
   const pendingTasks = tasks.filter((t) => t.status === "Pending").length;
-  const inProgressTasks = tasks.filter((t) => t.status === "In Progress").length;
+  const inProgressTasks = tasks.filter(
+    (t) => t.status === "In Progress",
+  ).length;
   const completedTasks = tasks.filter((t) => t.status === "Completed").length;
 
   const successRate =
@@ -28,14 +30,13 @@ const Dashboard = () => {
     try {
       const response = await getTasks(
         status || undefined,
-        search || undefined,
-        sort
+        debouncedSearch || undefined,
+        sort,
       );
 
       setTasks(response.data);
     } catch {
       toast.error("Failed to fetch tasks");
-      
     } finally {
       setLoading(false);
     }
@@ -83,9 +84,7 @@ const Dashboard = () => {
           <p className="text-sm text-gray-500">Completed</p>
           <h2 className="text-3xl font-bold">{completedTasks}</h2>
 
-          <p className="mt-2 text-green-600">
-            Success Rate : {successRate}%
-          </p>
+          <p className="mt-2 text-green-600">Success Rate : {successRate}%</p>
         </div>
       </div>
 
@@ -100,9 +99,7 @@ const Dashboard = () => {
         <select
           className="rounded-lg border p-3"
           value={status}
-          onChange={(e) =>
-            setStatus(e.target.value as TaskStatus | "")
-          }
+          onChange={(e) => setStatus(e.target.value as TaskStatus | "")}
         >
           <option value="">All Status</option>
           <option value="Pending">Pending</option>
@@ -113,9 +110,7 @@ const Dashboard = () => {
         <select
           className="rounded-lg border p-3"
           value={sort}
-          onChange={(e) =>
-            setSort(e.target.value as "ASC" | "DESC")
-          }
+          onChange={(e) => setSort(e.target.value as "ASC" | "DESC")}
         >
           <option value="DESC">Newest</option>
           <option value="ASC">Oldest</option>

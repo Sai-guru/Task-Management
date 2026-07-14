@@ -34,23 +34,16 @@ const AddTask = () => {
   return (
     <div className="mx-auto max-w-2xl">
       <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-md dark:border-gray-700 dark:bg-gray-800">
-        <h1 className="mb-2 text-3xl font-bold">
-          Add New Task
-        </h1>
+        <h1 className="mb-2 text-3xl font-bold">Add New Task</h1>
 
         <p className="mb-8 text-gray-500">
           Fill in the details below to create a new task.
         </p>
 
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-6"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Title */}
           <div>
-            <label className="mb-2 block font-medium">
-              Task Title
-            </label>
+            <label className="mb-2 block font-medium">Task Title</label>
 
             <input
               {...register("title", { required: "Title is required" })}
@@ -67,13 +60,17 @@ const AddTask = () => {
 
           {/* Description */}
           <div>
-            <label className="mb-2 block font-medium">
-              Description
-            </label>
+            <label className="mb-2 block font-medium">Description</label>
 
             <textarea
               rows={5}
-              {...register("description", { required: "Description is required", minLength: { value: 20, message: "Description must be at least 20 characters" } })}
+              {...register("description", {
+                required: "Description is required",
+                minLength: {
+                  value: 20,
+                  message: "Description must be at least 20 characters",
+                },
+              })}
               className="w-full rounded-lg border p-3 outline-none focus:border-blue-500"
               placeholder="Enter task description"
             />
@@ -87,9 +84,7 @@ const AddTask = () => {
 
           {/* Status */}
           <div>
-            <label className="mb-2 block font-medium">
-              Status
-            </label>
+            <label className="mb-2 block font-medium">Status</label>
 
             <select
               {...register("status")}
@@ -105,7 +100,7 @@ const AddTask = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
+              className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isSubmitting ? "Creating..." : "Create Task"}
             </button>
