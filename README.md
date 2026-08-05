@@ -6,7 +6,7 @@ A Full Stack Task Management Application built using React, TypeScript, Node.js,
 
 The application allows users to:
 
-- Sign in with Google OAuth2
+- Sign in with Google OAuth2.
 - Keep tasks separated per user
 - View all tasks
 - Create new tasks
